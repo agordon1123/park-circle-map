@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+    <title>Park Circle Map</title>
+</head>
+<body>
+    <div class="content">
+        <header>
+            <a href ="https://arc.northcharleston.org/NEIGHBORS/"> > >Map Reference< < </a>
+            <h1>
+                <br>
+                Park Circle<br>
+                Charleston, SC<br>
+                29405
+            </h1>
+            <a href="http://geojson.io/#map=15/32.8857/-79.9943"> > >GeoJSON< < </a>
+        </header>
+
+        <section class="upper-content">
+            <div class="about">
+                <h3>About PC</h3>
+                <p>Up-and-coming Park Circle has a lively dining and nightlife scene centered on East Montague Avenue, including shows at South of Broadway theater and a craft brewery. The Hunley submarine, which was lost for more than a century, is on display, plus artifacts found onboard when it was discovered. A butterfly garden and disc golf course at Park Circle, and Quarterman Park with a small lake, offer peaceful retreats.</p>
+            </div>
+
+            <div class="geography">
+                <h3>Geography</h3>
+                <p>North Charleston is located near the Atlantic Ocean in the coastal plain just north of Charleston in South Carolina. According to the 2010 United States Census, the city has a total area of 76.6 square miles (198.5 km2), of which 73.2 square miles (189.6 km2) is land and 3.5 square miles (9.0 km2), or 4.52%, is water.</p>
+            </div>
+        </section>
+
+        <br>
+        <br>
+
+        <div id="mapid">
+        </div>
+
+        <br>
+
+        <footer>
+            <p class="copyright">Copyright 2019 AG Enterprises</p>
+        </footer>
+
+        <script>
+            var mymap = L.map('mapid').setView([32.88138919865196,-79.98523235321045], 14);
+
+            var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
+            var circle = L.circle([51.508, -0.11], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5,
+                radius: 500
+            }).addTo(mymap);
+
+            var polygon = L.polygon([
+                [32.8827947531744,
+                -79.98527526855469],
+
+                [32.89234472559724,  
+                -79.98553276062012],
+
+                [32.893858211636505,
+                -79.99450206756592],
+                    
+                [32.89342578969234,
+                -79.99428749084473],
+                    
+                [32.8932095779287,
+                -79.99351501464844],
+                    
+                [32.88693920724428,
+                -79.98948097229004],
+                    
+                [32.883623659494546,
+                -79.98939514160156],
+                    
+                [32.88369573793858,
+                -79.98896598815918],
+                    
+                [32.88402009021135,
+                -79.98849391937256],
+                    
+                [32.882218118118224,
+                -79.98621940612793],
+                    
+                [32.8827947531744,
+                -79.98527526855469]
+            ]).addTo(mymap);
+
+            /*
+            var polygon = L.polygon([
+                [32.882218118118224,
+                -79.98630523681639],
+
+                [32.88402009021135,  
+                -79.9885368347168],
+
+                [32.88380385549475,
+                -79.98879432678223],
+                    
+                [32.88358762025053,
+                -79.9890947341919],
+                    
+                [32.883551580991856,
+                -79.9894380569458],
+                    
+                [32.88358762025053,
+                -79.99308586120605],
+                    
+                [32.87965925479318,
+                -79.99269962310791],
+                    
+                [32.87753281920832,
+                -79.98991012573241],
+                    
+                [32.88059631190807,
+                -79.98630523681639],
+                    
+                [32.881028796465884,
+                -79.98673439025879],
+                    
+                [32.88167751934566,
+                -79.9866485595703]
+
+                [32.882218118118224,
+                -79.98630523681639]
+            ]).addTo(mymap);
+            */
+        
+
+
+            marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+            circle.bindPopup("I am a circle.");
+            polygon.bindPopup("I am a polygon.");
+
+            var popup = L.popup()
+                .setLatLng([51.5, -0.09])
+                .setContent("I am a standalone popup.")
+                // .openOn(mymap);
+
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYXJnb3Jkb24iLCJhIjoiY2p4N280a2plMGJ4NDN5cWJvZHhtNHFiOCJ9.-pWp3ZJYkoNjwxVsI0xELQ', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox.streets',
+                accessToken: 'your.mapbox.access.token'
+            }).addTo(mymap);
+        </script>  
+    </div>
+</body>
+</html>

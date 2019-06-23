@@ -368,13 +368,29 @@ textarea {
 /* CSS RESET ABOVE */
 
 #mapid { 
-    height: 600px; 
-    width: 800px;
-    margin: 50px;
+    /* height: 600px; 
+    width: 800px; */
+    height: 60vh;;
+    width: 80%;
+    margin: 0 auto;
+    border: 10px solid black;
 }
 
-body h1 {
-    color: #33A532;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+}
+
+header a {
+    margin: 60px;
+    text-decoration: none;
+    color: black;
+}
+
+header h1 {
+    color: black;
     text-align: center;
     font-family: "Titillium Web", sans-serif;
     font-size: 2.4rem;
@@ -383,15 +399,18 @@ body h1 {
 
 .content {
     max-width: 880px;
-    background-color: lightgrey;
+    background-image: url("willian-justen-de-vasconcellos-603962-unsplash.jpg");
     height: 100%;
     margin: 0 auto;
 }
 
 .upper-content {
+    width: 80%;
     display: flex;
     justify-content: space-around;
-    border: 1px solid black;
+    border: 10px solid black;
+    margin: 0 auto;
+    background-color: aliceblue;
 }
 
 .upper-content p {
@@ -405,9 +424,15 @@ body h1 {
 }
 
 .about {
-    width: 40%
+    width: 30%
 }
 
 .geography {
-    width: 40%;
+    width: 30%;
+}
+
+.copyright {
+    margin: 20px;
+    text-align: center;
+    text-decoration: underline;
 }
